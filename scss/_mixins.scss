@@ -8,6 +8,9 @@
 // Deprecate
 @import "mixins/deprecate";
 
+// RTL Support
+@import "mixins/rtl";
+
 // Utilities
 @import "mixins/breakpoints";
 @import "mixins/image";

@@ -14,8 +14,8 @@
   @include border-radius($card-border-radius);
 
   > hr {
-    margin-right: 0;
-    margin-left: 0;
+    @include margin-right(0);
+    @include margin-left(0);
   }
 
   > .list-group:first-child {
@@ -58,7 +58,7 @@
   }
 
   + .card-link {
-    margin-left: $card-spacer-x;
+    @include margin-left($card-spacer-x);
   }
 }
 
@@ -100,15 +100,15 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-spacer-x / 2;
+  @include margin-right(-$card-spacer-x / 2);
   margin-bottom: -$card-spacer-y;
-  margin-left: -$card-spacer-x / 2;
+  @include margin-left(-$card-spacer-x / 2);
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -$card-spacer-x / 2;
-  margin-left: -$card-spacer-x / 2;
+  @include margin-right(-$card-spacer-x / 2);
+  @include margin-left(-$card-spacer-x / 2);
 }
 
 // Card image
@@ -150,17 +150,17 @@
 
   @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
-    margin-right: -$card-deck-margin;
-    margin-left: -$card-deck-margin;
+    @include margin-right(-$card-deck-margin);
+    @include margin-left(-$card-deck-margin);
 
     .card {
       display: flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
       flex-direction: column;
-      margin-right: $card-deck-margin;
+      @include margin-right($card-deck-margin);
       margin-bottom: 0; // Override the default
-      margin-left: $card-deck-margin;
+      @include margin-left($card-deck-margin);
     }
   }
 }
@@ -190,39 +190,39 @@
       margin-bottom: 0;
 
       + .card {
-        margin-left: 0;
-        border-left: 0;
+        @include margin-left(0);
+        @include border-left(0);
       }
 
       // Handle rounded corners
       @if $enable-rounded {
         &:not(:last-child) {
-          @include border-right-radius(0);
+          @include border-end-radius(0);
 
           .card-img-top,
           .card-header {
             // stylelint-disable-next-line property-blacklist
-            border-top-right-radius: 0;
+            @include border-top-end-radius(0);
           }
           .card-img-bottom,
           .card-footer {
             // stylelint-disable-next-line property-blacklist
-            border-bottom-right-radius: 0;
+            @include border-bottom-end-radius(0);
           }
         }
 
         &:not(:first-child) {
-          @include border-left-radius(0);
+          @include border-start-radius(0);
 
           .card-img-top,
           .card-header {
             // stylelint-disable-next-line property-blacklist
-            border-top-left-radius: 0;
+            @include border-top-start-radius(0);
           }
           .card-img-bottom,
           .card-footer {
             // stylelint-disable-next-line property-blacklist
-            border-bottom-left-radius: 0;
+            @include border-bottom-start-radius(0);
           }
         }
       }

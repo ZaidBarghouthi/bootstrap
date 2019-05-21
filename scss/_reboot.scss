@@ -37,7 +37,20 @@ body {
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
-  text-align: left; // 2
+  @if ($rtl-support == 0) {
+    text-align: left;
+  }
+  @if ($rtl-support == 1) {
+    text-align: right;
+  }
+  @if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      text-align: left;
+    }
+    [dir="rtl"] & {
+      text-align: right;
+    }
+  }
   background-color: $body-bg; // 3
   -webkit-text-size-adjust: 100%; // 4
   -webkit-tap-highlight-color: rgba($black, 0); // 5

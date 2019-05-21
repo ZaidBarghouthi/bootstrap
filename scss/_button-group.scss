@@ -37,18 +37,18 @@
   // Prevent double borders when buttons are next to each other
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) {
-    margin-left: -$btn-border-width;
+    @include margin-left(-$btn-border-width);
   }
 
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
   > .btn-group:not(:last-child) > .btn {
-    @include border-right-radius(0);
+    @include border-end-radius(0);
   }
 
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) > .btn {
-    @include border-left-radius(0);
+    @include border-start-radius(0);
   }
 }
 
@@ -65,28 +65,28 @@
 //
 
 .dropdown-toggle-split {
-  padding-right: $btn-padding-x * .75;
-  padding-left: $btn-padding-x * .75;
+  @include padding-right($btn-padding-x * .75);
+  @include padding-left($btn-padding-x * .75);
 
   &::after,
   .dropup &::after,
   .dropright &::after {
-    margin-left: 0;
+    @include margin-left(0);
   }
 
   .dropleft &::before {
-    margin-right: 0;
+    @include margin-right(0);
   }
 }
 
 .btn-sm + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-sm * .75;
-  padding-left: $btn-padding-x-sm * .75;
+  @include padding-right($btn-padding-x-sm * .75);
+  @include padding-left($btn-padding-x-sm * .75);
 }
 
 .btn-lg + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-lg * .75;
-  padding-left: $btn-padding-x-lg * .75;
+  @include padding-right($btn-padding-x-lg * .75);
+  @include padding-left($btn-padding-x-lg * .75);
 }
 
 

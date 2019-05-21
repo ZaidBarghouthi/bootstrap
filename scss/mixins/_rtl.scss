@@ -1,0 +1,140 @@
+@mixin right($value) {
+  @if ($rtl-support == 0) {
+    right: $value;
+  }
+  @else if ($rtl-support == 1) {
+    left: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      right: $value;
+    }
+    [dir="rtl"] & {
+      left: $value;
+    }
+  }
+}
+
+@mixin left($value) {
+  @if ($rtl-support == 0) {
+    left: $value;
+  }
+  @else if ($rtl-support == 1) {
+    right: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      left: $value;
+    }
+    [dir="rtl"] & {
+      right: $value;
+    }
+  }
+}
+
+
+@mixin padding-left($value) {
+  @if ($rtl-support == 0) {
+    padding-left: $value;
+  }
+  @else if ($rtl-support == 1) {
+    padding-right: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      padding-left: $value;
+    }
+    [dir="rtl"] & {
+      padding-right: $value;
+    }
+  }
+}
+
+@mixin padding-right($value) {
+  @if ($rtl-support == 0) {
+    padding-right: $value;
+  }
+  @else if ($rtl-support == 1) {
+    padding-left: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      padding-right: $value;
+    }
+    [dir="rtl"] & {
+      padding-left: $value;
+    }
+  }
+}
+
+
+
+@mixin margin-left($value) {
+  @if ($rtl-support == 0) {
+    margin-left: $value;
+  }
+  @else if ($rtl-support == 1) {
+    margin-right: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      margin-left: $value;
+    }
+    [dir="rtl"] & {
+      margin-right: $value;
+    }
+  }
+}
+
+@mixin margin-right($value) {
+  @if ($rtl-support == 0) {
+    margin-right: $value;
+  }
+  @else if ($rtl-support == 1) {
+    margin-left: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      margin-right: $value;
+    }
+    [dir="rtl"] & {
+      margin-left: $value;
+    }
+  }
+}
+
+
+@mixin border-left($value) {
+  @if ($rtl-support == 0) {
+    border-left: $value;
+  }
+  @else if ($rtl-support == 1) {
+    border-right: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      border-left: $value;
+    }
+    [dir="rtl"] & {
+      border-right: $value;
+    }
+  }
+}
+
+@mixin border-right($value) {
+  @if ($rtl-support == 0) {
+    border-right: $value;
+  }
+  @else if ($rtl-support == 1) {
+    border-left: $value;
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      border-right: $value;
+    }
+    [dir="rtl"] & {
+      border-left: $value;
+    }
+  }
+}
+
