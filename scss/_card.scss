@@ -14,8 +14,8 @@
   @include border-radius($card-border-radius);
 
   > hr {
-    @include margin-right(0);
-    @include margin-left(0);
+    @include margin-end(0);
+    @include margin-start(0);
   }
 
   > .list-group:first-child {
@@ -58,7 +58,7 @@
   }
 
   + .card-link {
-    @include margin-left($card-spacer-x);
+    @include margin-start($card-spacer-x);
   }
 }
 
@@ -100,15 +100,15 @@
 //
 
 .card-header-tabs {
-  @include margin-right(-$card-spacer-x / 2);
+  @include margin-end(-$card-spacer-x / 2);
   margin-bottom: -$card-spacer-y;
-  @include margin-left(-$card-spacer-x / 2);
+  @include margin-start(-$card-spacer-x / 2);
   border-bottom: 0;
 }
 
 .card-header-pills {
-  @include margin-right(-$card-spacer-x / 2);
-  @include margin-left(-$card-spacer-x / 2);
+  @include margin-end(-$card-spacer-x / 2);
+  @include margin-start(-$card-spacer-x / 2);
 }
 
 // Card image
@@ -150,17 +150,17 @@
 
   @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
-    @include margin-right(-$card-deck-margin);
-    @include margin-left(-$card-deck-margin);
+    @include margin-end(-$card-deck-margin);
+    @include margin-start(-$card-deck-margin);
 
     .card {
       display: flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
       flex-direction: column;
-      @include margin-right($card-deck-margin);
+      @include margin-end($card-deck-margin);
       margin-bottom: 0; // Override the default
-      @include margin-left($card-deck-margin);
+      @include margin-start($card-deck-margin);
     }
   }
 }
@@ -190,8 +190,8 @@
       margin-bottom: 0;
 
       + .card {
-        @include margin-left(0);
-        @include border-left(0);
+        @include margin-start(0);
+        @include border-start(0);
       }
 
       // Handle rounded corners

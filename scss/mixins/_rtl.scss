@@ -1,4 +1,4 @@
-@mixin right($value) {
+@mixin end($value) {
   @if ($rtl-support == 0) {
     right: $value;
   }
@@ -15,7 +15,7 @@
   }
 }
 
-@mixin left($value) {
+@mixin start($value) {
   @if ($rtl-support == 0) {
     left: $value;
   }
@@ -33,7 +33,7 @@
 }
 
 
-@mixin padding-left($value) {
+@mixin padding-start($value) {
   @if ($rtl-support == 0) {
     padding-left: $value;
   }
@@ -50,7 +50,7 @@
   }
 }
 
-@mixin padding-right($value) {
+@mixin padding-end($value) {
   @if ($rtl-support == 0) {
     padding-right: $value;
   }
@@ -69,7 +69,7 @@
 
 
 
-@mixin margin-left($value) {
+@mixin margin-start($value) {
   @if ($rtl-support == 0) {
     margin-left: $value;
   }
@@ -86,7 +86,7 @@
   }
 }
 
-@mixin margin-right($value) {
+@mixin margin-end($value) {
   @if ($rtl-support == 0) {
     margin-right: $value;
   }
@@ -104,7 +104,7 @@
 }
 
 
-@mixin border-left($value) {
+@mixin border-start($value) {
   @if ($rtl-support == 0) {
     border-left: $value;
   }
@@ -121,7 +121,7 @@
   }
 }
 
-@mixin border-right($value) {
+@mixin border-end($value) {
   @if ($rtl-support == 0) {
     border-right: $value;
   }
