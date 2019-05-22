@@ -138,3 +138,51 @@
   }
 }
 
+@mixin text-align($value) {
+  @if ($rtl-support == 0) {
+    @if ($value == start) {
+      text-align: left;
+    }
+    @else if ($value == end) {
+      text-align: right;
+    }
+    @else {
+      text-align: $value;
+    }
+  }
+  @else if ($rtl-support == 1) {
+    @if ($value == start) {
+      text-align: right;
+    }
+    @else if ($value == end) {
+      text-align: left;
+    }
+    @else {
+      text-align: $value;
+    }
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      @if ($value == start) {
+        text-align: left;
+      }
+      @else if ($value == end) {
+        text-align: right;
+      }
+      @else {
+        text-align: $value;
+      }
+    }
+    [dir="rtl"] & {
+      @if ($value == start) {
+        text-align: right;
+      }
+      @else if ($value == end) {
+        text-align: left;
+      }
+      @else {
+        text-align: $value;
+      }
+    }
+  }
+}
