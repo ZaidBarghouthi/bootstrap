@@ -18,7 +18,7 @@
 .modal {
   position: fixed;
   top: 0;
-  left: 0;
+  @include start(0);
   z-index: $zindex-modal;
   display: none;
   width: 100%;
@@ -119,7 +119,7 @@
 .modal-backdrop {
   position: fixed;
   top: 0;
-  left: 0;
+  @include start(0);
   z-index: $zindex-modal-backdrop;
   width: 100vw;
   height: 100vh;
@@ -143,7 +143,10 @@
   .close {
     padding: $modal-header-padding;
     // auto on the left force icon to the right even when there is no .modal-title
-    margin: (-$modal-header-padding-y) (-$modal-header-padding-x) (-$modal-header-padding-y) auto;
+    margin-top: -$modal-header-padding-y;
+    margin-bottom: -$modal-header-padding-y;
+    @include margin-start(auto);
+    @include margin-end(-$modal-header-padding-x);
   }
 }
 
@@ -173,8 +176,8 @@
   @include border-bottom-radius($modal-content-border-radius);
 
   // Easily place margin between footer elements
-  > :not(:first-child) { margin-left: .25rem; }
-  > :not(:last-child) { margin-right: .25rem; }
+  > :not(:first-child) { @include margin-start(.25rem); }
+  > :not(:last-child) { @include margin-end(.25rem); }
 }
 
 // Measure scrollbar width for padding body during modal show/hide
