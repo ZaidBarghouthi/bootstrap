@@ -11,12 +11,12 @@
   position: relative;
   display: block;
   min-height: $font-size-base * $line-height-base;
-  padding-left: $custom-control-gutter + $custom-control-indicator-size;
+  @include padding-start($custom-control-gutter + $custom-control-indicator-size);
 }
 
 .custom-control-inline {
   display: inline-flex;
-  margin-right: $custom-control-spacer-x;
+  @include margin-end($custom-control-spacer-x);
 }
 
 .custom-control-input {
@@ -78,7 +78,7 @@
   &::before {
     position: absolute;
     top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
-    left: -($custom-control-gutter + $custom-control-indicator-size);
+    @include start(-($custom-control-gutter + $custom-control-indicator-size));
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -93,7 +93,7 @@
   &::after {
     position: absolute;
     top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
-    left: -($custom-control-gutter + $custom-control-indicator-size);
+    @include start(-($custom-control-gutter + $custom-control-indicator-size));
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -168,11 +168,11 @@
 // Tweak a few things for switches
 
 .custom-switch {
-  padding-left: $custom-switch-width + $custom-control-gutter;
+  @include padding-start($custom-switch-width + $custom-control-gutter);
 
   .custom-control-label {
     &::before {
-      left: -($custom-switch-width + $custom-control-gutter);
+      @include start(-($custom-switch-width + $custom-control-gutter));
       width: $custom-switch-width;
       pointer-events: all;
       // stylelint-disable-next-line property-blacklist
@@ -181,7 +181,7 @@
 
     &::after {
       top: calc(#{(($font-size-base * $line-height-base - $custom-control-indicator-size) / 2)} + #{$custom-control-indicator-border-width * 2});
-      left: calc(#{-($custom-switch-width + $custom-control-gutter)} + #{$custom-control-indicator-border-width * 2});
+      @include start(calc(#{-($custom-switch-width + $custom-control-gutter)} + #{$custom-control-indicator-border-width * 2}));
       width: $custom-switch-indicator-size;
       height: $custom-switch-indicator-size;
       background-color: $custom-control-indicator-border-color;
@@ -216,7 +216,10 @@
   display: inline-block;
   width: 100%;
   height: $custom-select-height;
-  padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
+  padding-top: $custom-select-padding-y;
+  @include padding-end($custom-select-padding-x + $custom-select-indicator-padding);
+  padding-bottom: $custom-select-padding-y;
+  @include padding-start($custom-select-padding-x);
   font-family: $custom-select-font-family;
   @include font-size($custom-select-font-size);
   font-weight: $custom-select-font-weight;
@@ -253,7 +256,7 @@
   &[multiple],
   &[size]:not([size="1"]) {
     height: auto;
-    padding-right: $custom-select-padding-x;
+    @include padding-end($custom-select-padding-x);
     background-image: none;
   }
 
@@ -272,7 +275,7 @@
   height: $custom-select-height-sm;
   padding-top: $custom-select-padding-y-sm;
   padding-bottom: $custom-select-padding-y-sm;
-  padding-left: $custom-select-padding-x-sm;
+  @include padding-start($custom-select-padding-x-sm);
   @include font-size($custom-select-font-size-sm);
 }
 
@@ -280,7 +283,7 @@
   height: $custom-select-height-lg;
   padding-top: $custom-select-padding-y-lg;
   padding-bottom: $custom-select-padding-y-lg;
-  padding-left: $custom-select-padding-x-lg;
+  @include padding-start($custom-select-padding-x-lg);
   @include font-size($custom-select-font-size-lg);
 }
 
@@ -320,8 +323,8 @@
 .custom-file-label {
   position: absolute;
   top: 0;
-  right: 0;
-  left: 0;
+  @include end(0);
+  @include start(0);
   z-index: 1;
   display: flex;
   height: $custom-file-height;
@@ -345,21 +348,21 @@
   border-color: inherit;
   border-style: solid;
   border-width: $custom-file-border-width;
-  @include border-left-radius(inherit);
+  @include border-start-radius(inherit);
 }
 
 .custom-file-button {
   display: block;
   flex-shrink: 0;
   padding: $custom-file-padding-y $custom-file-padding-x;
-  margin-left: -$custom-file-border-width;
+  @include margin-start(-$custom-file-border-width);
   line-height: $custom-file-line-height;
   color: $custom-file-button-color;
   @include gradient-bg($custom-file-button-bg);
   border-color: inherit;
   border-style: solid;
   border-width: $custom-file-border-width;
-  @include border-right-radius(inherit);
+  @include border-end-radius(inherit);
 }
 
 // Range
@@ -446,8 +449,8 @@
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
     margin-top: 0; // Edge specific
-    margin-right: $custom-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
-    margin-left: $custom-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
+    @include margin-end($custom-range-thumb-focus-box-shadow-width); // Workaround that overflowed box-shadow is hidden.
+    @include margin-start($custom-range-thumb-focus-box-shadow-width);  // Workaround that overflowed box-shadow is hidden.
     @include gradient-bg($custom-range-thumb-bg);
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
@@ -477,7 +480,7 @@
   }
 
   &::-ms-fill-upper {
-    margin-right: 15px; // arbitrary?
+    @include margin-end(15px); // arbitrary?
     background-color: $custom-range-track-bg;
     @include border-radius($custom-range-track-border-radius);
   }

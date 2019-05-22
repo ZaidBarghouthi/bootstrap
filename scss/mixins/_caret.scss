@@ -25,11 +25,24 @@
   border-bottom: $caret-width solid transparent;
 }
 
+@mixin caret-end {
+  border-top: $caret-width solid transparent;
+  @include border-end(0);
+  border-bottom: $caret-width solid transparent;
+  @include border-start($caret-width solid);
+}
+
+@mixin caret-start {
+  border-top: $caret-width solid transparent;
+  @include border-end($caret-width solid);
+  border-bottom: $caret-width solid transparent;
+}
+
 @mixin caret($direction: down) {
   @if $enable-caret {
     &::after {
       display: inline-block;
-      margin-left: $caret-spacing;
+      @include margin-start($caret-spacing);
       vertical-align: $caret-vertical-align;
       content: "";
       @if $direction == down {
@@ -38,6 +51,8 @@
         @include caret-up;
       } @else if $direction == right {
         @include caret-right;
+      } @else if $direction == end {
+        @include caret-end;
       }
     }
 
@@ -48,15 +63,29 @@
 
       &::before {
         display: inline-block;
-        margin-right: $caret-spacing;
+        @include margin-end($caret-spacing);
         vertical-align: $caret-vertical-align;
         content: "";
         @include caret-left;
       }
     }
 
+    @if $direction == start {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        display: inline-block;
+        @include margin-end($caret-spacing);
+        vertical-align: $caret-vertical-align;
+        content: "";
+        @include caret-start;
+      }
+    }
+
     &:empty::after {
-      margin-left: 0;
+      @include margin-start(0);
     }
   }
 }

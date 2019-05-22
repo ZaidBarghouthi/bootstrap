@@ -2,7 +2,9 @@
 .dropup,
 .dropright,
 .dropdown,
-.dropleft {
+.dropleft,
+.dropstart,
+.dropend {
   position: relative;
 }
 
@@ -17,7 +19,7 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  @include start(0);
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;
@@ -25,7 +27,7 @@
   margin: $dropdown-spacer 0 0; // override default ul
   @include font-size($dropdown-font-size);
   color: $dropdown-color;
-  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  @include text-align(start); // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
@@ -46,6 +48,16 @@
     .dropdown-menu#{$infix}-right {
       right: 0;
       left: auto;
+    }
+
+    .dropdown-menu#{$infix}-start {
+      @include end(auto);
+      @include start(0);
+    }
+
+    .dropdown-menu#{$infix}-end {
+      @include end(0);
+      @include start(auto);
     }
   }
 }
@@ -99,6 +111,40 @@
   }
 }
 
+.dropend {
+  .dropdown-menu {
+    top: 0;
+    @include end(auto);
+    @include start(100%);
+    margin-top: 0;
+    @include margin-start($dropdown-spacer);
+  }
+
+  .dropdown-toggle {
+    @include caret(end);
+    &::after {
+      vertical-align: 0;
+    }
+  }
+}
+
+.dropstart {
+  .dropdown-menu {
+    top: 0;
+    @include end(100%);
+    @include start(auto);
+    margin-top: 0;
+    @include margin-end($dropdown-spacer);
+  }
+
+  .dropdown-toggle {
+    @include caret(end);
+    &::before {
+      vertical-align: 0;
+    }
+  }
+}
+
 // When enabled Popper.js, reset basic dropdown position
 // stylelint-disable-next-line no-duplicate-selectors
 .dropdown-menu {
@@ -106,7 +152,7 @@
   &[x-placement^="right"],
   &[x-placement^="bottom"],
   &[x-placement^="left"] {
-    right: auto;
+    @include end(auto);
     bottom: auto;
   }
 }

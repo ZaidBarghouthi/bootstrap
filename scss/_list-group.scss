@@ -7,7 +7,7 @@
   flex-direction: column;
 
   // No need to set list-style: none; since .list-group-item is block level
-  padding-left: 0; // reset padding because ul and ol
+  @include padding-start(0); // reset padding because ul and ol
   margin-bottom: 0;
 }
 
@@ -90,18 +90,18 @@
       flex-direction: row;
 
       .list-group-item {
-        margin-right: -$list-group-border-width;
+        @include margin-end(-$list-group-border-width);
         margin-bottom: 0;
 
         &:first-child {
-          @include border-left-radius($list-group-border-radius);
-          @include border-top-right-radius(0);
+          @include border-start-radius($list-group-border-radius);
+          @include border-top-end-radius(0);
         }
 
         &:last-child {
-          margin-right: 0;
-          @include border-right-radius($list-group-border-radius);
-          @include border-bottom-left-radius(0);
+          @include margin-end(0);
+          @include border-end-radius($list-group-border-radius);
+          @include border-bottom-start-radius(0);
         }
       }
     }
@@ -116,8 +116,8 @@
 
 .list-group-flush {
   .list-group-item {
-    border-right: 0;
-    border-left: 0;
+    @include border-end(0);
+    @include border-start(0);
     @include border-radius(0);
 
     &:last-child {
