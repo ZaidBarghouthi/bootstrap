@@ -72,7 +72,7 @@
         background-image: $icon;
         background-repeat: no-repeat;
 
-        background-position: center directional(end) $input-height-inner-quarter;
+        background-position: directional(end) $input-height-inner-quarter center;
         background-size: $input-height-inner-half $input-height-inner-half;
       }
 
