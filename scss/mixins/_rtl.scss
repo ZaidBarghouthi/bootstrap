@@ -186,3 +186,52 @@
     }
   }
 }
+
+@mixin float($value) {
+  @if ($rtl-support == 0) {
+    @if ($value == start) {
+      float: left;
+    }
+    @else if ($value == end) {
+      float: right;
+    }
+    @else {
+      float: $value;
+    }
+  }
+  @else if ($rtl-support == 1) {
+    @if ($value == start) {
+      float: right;
+    }
+    @else if ($value == end) {
+      float: left;
+    }
+    @else {
+      float: $value;
+    }
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      @if ($value == start) {
+        float: left;
+      }
+      @else if ($value == end) {
+        float: right;
+      }
+      @else {
+        float: $value;
+      }
+    }
+    [dir="rtl"] & {
+      @if ($value == start) {
+        float: right;
+      }
+      @else if ($value == end) {
+        float: left;
+      }
+      @else {
+        float: $value;
+      }
+    }
+  }
+}
