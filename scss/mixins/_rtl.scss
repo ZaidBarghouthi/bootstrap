@@ -1,5 +1,5 @@
 @mixin direction($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     @if ($value == "ste") {
       direction: ltr;
     }
@@ -10,7 +10,7 @@
       direction: $value;
     }
   }
-  @else if ($rtl-support == 1) {
+  @else {
     @if ($value == "ste") {
       direction: rtl;
     }
@@ -19,30 +19,6 @@
     }
     @else {
       direction: $value;
-    }
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      @if ($value == "ste") {
-        direction: ltr;
-      }
-      @else if ($value == "ets") {
-        direction: rtl;
-      }
-      @else {
-        direction: $value;
-      }
-    }
-    [dir="rtl"] & {
-      @if ($value == "ste") {
-        direction: rtl;
-      }
-      @else if ($value == "ets") {
-        direction: ltr;
-      }
-      @else {
-        direction: $value;
-      }
     }
   }
 }
@@ -51,147 +27,83 @@
 
 
 @mixin end($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     right: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     left: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      right: $value;
-    }
-    [dir="rtl"] & {
-      left: $value;
-    }
   }
 }
 
 @mixin start($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     left: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     right: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      left: $value;
-    }
-    [dir="rtl"] & {
-      right: $value;
-    }
   }
 }
 
 
 @mixin padding-start($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     padding-left: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     padding-right: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      padding-left: $value;
-    }
-    [dir="rtl"] & {
-      padding-right: $value;
-    }
   }
 }
 
 @mixin padding-end($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     padding-right: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     padding-left: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      padding-right: $value;
-    }
-    [dir="rtl"] & {
-      padding-left: $value;
-    }
   }
 }
 
 
 
 @mixin margin-start($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     margin-left: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     margin-right: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      margin-left: $value;
-    }
-    [dir="rtl"] & {
-      margin-right: $value;
-    }
   }
 }
 
 @mixin margin-end($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     margin-right: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     margin-left: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      margin-right: $value;
-    }
-    [dir="rtl"] & {
-      margin-left: $value;
-    }
   }
 }
 
 
 @mixin border-start($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     border-left: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     border-right: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      border-left: $value;
-    }
-    [dir="rtl"] & {
-      border-right: $value;
-    }
   }
 }
 
 @mixin border-end($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     border-right: $value;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     border-left: $value;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      border-right: $value;
-    }
-    [dir="rtl"] & {
-      border-left: $value;
-    }
   }
 }
 
 @mixin text-align($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     @if ($value == start) {
       text-align: left;
     }
@@ -202,7 +114,7 @@
       text-align: $value;
     }
   }
-  @else if ($rtl-support == 1) {
+  @else {
     @if ($value == start) {
       text-align: right;
     }
@@ -211,36 +123,12 @@
     }
     @else {
       text-align: $value;
-    }
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      @if ($value == start) {
-        text-align: left;
-      }
-      @else if ($value == end) {
-        text-align: right;
-      }
-      @else {
-        text-align: $value;
-      }
-    }
-    [dir="rtl"] & {
-      @if ($value == start) {
-        text-align: right;
-      }
-      @else if ($value == end) {
-        text-align: left;
-      }
-      @else {
-        text-align: $value;
-      }
     }
   }
 }
 
 @mixin float($value) {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     @if ($value == start) {
       float: left;
     }
@@ -251,7 +139,7 @@
       float: $value;
     }
   }
-  @else if ($rtl-support == 1) {
+  @else {
     @if ($value == start) {
       float: right;
     }
@@ -260,30 +148,6 @@
     }
     @else {
       float: $value;
-    }
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      @if ($value == start) {
-        float: left;
-      }
-      @else if ($value == end) {
-        float: right;
-      }
-      @else {
-        float: $value;
-      }
-    }
-    [dir="rtl"] & {
-      @if ($value == start) {
-        float: right;
-      }
-      @else if ($value == end) {
-        float: left;
-      }
-      @else {
-        float: $value;
-      }
     }
   }
 }

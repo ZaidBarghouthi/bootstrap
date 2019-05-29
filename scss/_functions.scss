@@ -80,3 +80,17 @@
 
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
+
+@function directional($val) {
+  @if ($val == start) {
+    @return if($rtl, right, left);
+  }
+  @if ($val == end) {
+    @return if($rtl, left, right);
+  }
+  @return $val;
+}
+
+@function directional-numeric($val) {
+  @return if($rtl, -$val, $val);
+}

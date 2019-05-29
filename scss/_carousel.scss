@@ -44,38 +44,12 @@
 
 .carousel-item-next:not(.carousel-item-left),
 .active.carousel-item-right {
-  @if ($rtl-support == 0) {
-    transform: translateX(100%);
-  }
-  @else if ($rtl-support == 1) {
-    transform: translateX(-100%);
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      transform: translateX(100%);
-    }
-    [dir="rtl"] & {
-      transform: translateX(-100%);
-    }
-  }
+  transform: translateX(directional-numeric(100%));
 }
 
 .carousel-item-prev:not(.carousel-item-right),
 .active.carousel-item-left {
-  @if ($rtl-support == 0) {
-    transform: translateX(-100%);
-  }
-  @else if ($rtl-support == 1) {
-    transform: translateX(100%);
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      transform: translateX(-100%);
-    }
-    [dir="rtl"] & {
-      transform: translateX(100%);
-    }
-  }
+  transform: translateX(directional-numeric(-100%));
 }
 
 
@@ -158,36 +132,20 @@
 }
 
 .carousel-control-prev-icon {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     background-image: $carousel-control-prev-icon-bg;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     background-image: $carousel-control-next-icon-bg;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      background-image: $carousel-control-prev-icon-bg;
-    }
-    [dir="rtl"] & {
-      background-image: $carousel-control-next-icon-bg;
-    }
   }
 }
 
 .carousel-control-next-icon {
-  @if ($rtl-support == 0) {
+  @if not $rtl {
     background-image: $carousel-control-next-icon-bg;
   }
-  @else if ($rtl-support == 1) {
+  @else {
     background-image: $carousel-control-prev-icon-bg;
-  }
-  @else if ($rtl-support == 2) {
-    [dir="ltr"] & {
-      background-image: $carousel-control-next-icon-bg;
-    }
-    [dir="rtl"] & {
-      background-image: $carousel-control-prev-icon-bg;
-    }
   }
 }
 
