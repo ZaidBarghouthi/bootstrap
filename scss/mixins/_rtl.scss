@@ -1,3 +1,55 @@
+@mixin direction($value) {
+  @if ($rtl-support == 0) {
+    @if ($value == "ste") {
+      direction: ltr;
+    }
+    @else if ($value == "ets") {
+      direction: rtl;
+    }
+    @else {
+      direction: $value;
+    }
+  }
+  @else if ($rtl-support == 1) {
+    @if ($value == "ste") {
+      direction: rtl;
+    }
+    @else if ($value == "ets") {
+      direction: ltr;
+    }
+    @else {
+      direction: $value;
+    }
+  }
+  @else if ($rtl-support == 2) {
+    [dir="ltr"] & {
+      @if ($value == "ste") {
+        direction: ltr;
+      }
+      @else if ($value == "ets") {
+        direction: rtl;
+      }
+      @else {
+        direction: $value;
+      }
+    }
+    [dir="rtl"] & {
+      @if ($value == "ste") {
+        direction: rtl;
+      }
+      @else if ($value == "ets") {
+        direction: ltr;
+      }
+      @else {
+        direction: $value;
+      }
+    }
+  }
+}
+
+
+
+
 @mixin end($value) {
   @if ($rtl-support == 0) {
     right: $value;
